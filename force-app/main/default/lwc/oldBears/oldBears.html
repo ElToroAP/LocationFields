@@ -1,0 +1,10 @@
+<template>
+	<lightning-card title="Old Bears" icon-name="utility:animal_and_nature">
+		<template for:each={oldBears} for:item="bear">
+			<div key={bear.Id}>
+				{bear.Name}<br />
+				{bear.Age__c} years old
+			</div>
+		</template>
+	</lightning-card>
+</template>
