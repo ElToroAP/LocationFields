@@ -44,7 +44,7 @@ export default class InteractiveMap extends LightningElement {
 					Id: this.recordId,
 					Location__Latitude__s: this.round(lat2, this.precision),
 					Location__Longitude__s: this.round(lng2, this.precision),
-					Weight__c: this.weight + 1
+					Weight__c: isNaN(this.bear.weight) ? 1 : Number(this.bear.weight) + 1
 				}
 			};
 			console.log(
