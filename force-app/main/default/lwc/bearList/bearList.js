@@ -1,25 +1,3 @@
-<<<<<<< HEAD
-import { NavigationMixin, CurrentPageReference } from 'lightning/navigation';
-import { fireEvent } from 'c/pubsub';
-import { loadStyle } from 'lightning/platformResourceLoader';
-import ursusResources from '@salesforce/resourceUrl/ursus_park';
-import { LightningElement, track, wire } from 'lwc';
-/** BearController.searchBears(searchTerm) Apex method */
-import searchBears from '@salesforce/apex/BearController.searchBears';
-export default class BearListNav extends NavigationMixin(LightningElement) {
-	@track searchTerm = '';
-    @track bears;
-    @wire(CurrentPageReference) pageRef;
-    @wire(searchBears, {searchTerm: '$searchTerm'})
-    loadBears(result) {
-        this.bears = result;
-        if (result.data) {
-            fireEvent(this.pageRef, 'bearListUpdate', result.data);
-        }
-    }
-	connectedCallback() {
-		loadStyle(this, ursusResources + '/style.css');
-=======
 import { fireEvent } from "c/pubsub";
 import { NavigationMixin, CurrentPageReference } from "lightning/navigation";
 import { loadStyle } from "lightning/platformResourceLoader";
@@ -40,7 +18,6 @@ export default class BearListNav extends NavigationMixin(LightningElement) {
 	}
 	connectedCallback() {
 		loadStyle(this, ursusResources + "/style.css");
->>>>>>> refs/heads/Student
 	}
 	handleSearchTermChange(event) {
 		// Debouncing this method: do not update the reactive property as
@@ -54,28 +31,13 @@ export default class BearListNav extends NavigationMixin(LightningElement) {
 		}, 300);
 	}
 	get hasResults() {
-<<<<<<< HEAD
-		return (this.bears.data.length > 0);
-=======
 		return this.bears.data.length > 0;
->>>>>>> refs/heads/Student
 	}
 	handleBearView(event) {
 		// Get bear record id from bearview event
 		const bearId = event.detail;
 		// Navigate to bear record page
 		this[NavigationMixin.Navigate]({
-<<<<<<< HEAD
-			type: 'standard__recordPage',
-			attributes: {
-				recordId: bearId,
-				objectApiName: 'Bear__c',
-				actionName: 'view',
-			},
-		});
-	}
-}
-=======
 			type: "standard__recordPage",
 			attributes: {
 				recordId: bearId,
@@ -85,4 +47,3 @@ export default class BearListNav extends NavigationMixin(LightningElement) {
 		});
 	}
 }
->>>>>>> refs/heads/Student

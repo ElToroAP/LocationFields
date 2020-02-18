@@ -1,25 +1,11 @@
-<<<<<<< HEAD
-import { LightningElement, api, track, wire } from 'lwc';
-import { getRecord } from 'lightning/uiRecordApi';
-const fields = [
-	'Bear__c.Name',
-	'Bear__c.Location__Latitude__s',
-	'Bear__c.Location__Longitude__s'
-];
-=======
 import { LightningElement, api, track, wire } from "lwc";
 import { getRecord } from "lightning/uiRecordApi";
 const fields = ["Bear__c.Name", "Bear__c.Location__Latitude__s", "Bear__c.Location__Longitude__s"];
->>>>>>> refs/heads/Student
 export default class BearLocation extends LightningElement {
 	@api recordId;
 	@track name;
 	@track mapMarkers = [];
-<<<<<<< HEAD
-	@wire(getRecord, { recordId: '$recordId', fields })
-=======
 	@wire(getRecord, { recordId: "$recordId", fields })
->>>>>>> refs/heads/Student
 	loadBear({ error, data }) {
 		if (error) {
 			// TODO: handle error
@@ -29,19 +15,6 @@ export default class BearLocation extends LightningElement {
 			const Latitude = data.fields.Location__Latitude__s.value;
 			const Longitude = data.fields.Location__Longitude__s.value;
 			// Transform bear data into map markers
-<<<<<<< HEAD
-			this.mapMarkers = [{
-				location: { Latitude, Longitude },
-				title: this.name,
-				description: `Coords: ${Latitude}, ${Longitude}`
-			}];
-		}
-	}
-	get cardTitle() {
-		return (this.name) ? `${this.name}'s location` : 'Bear location';
-	}
-}
-=======
 			this.mapMarkers = [
 				{
 					location: { Latitude, Longitude },
@@ -55,4 +28,3 @@ export default class BearLocation extends LightningElement {
 		return this.name ? `${this.name}'s location` : "Bear location";
 	}
 }
->>>>>>> refs/heads/Student
